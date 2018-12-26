@@ -1,0 +1,13 @@
+#################### Code to forecast wind speed ##################
+
+
+import pandas as pd
+from datetime import datetime
+
+#Load Data
+def parse(x):
+    return datetime.strptime(x, '%Y %m %d %H')
+
+dataset = pd.read_csv('Beijing.csv', parse_dates = [['year', 'month', 'day', 'hour']], index_col = 0, date_parser = parse)
+dataset.drop('No', axis = 1, inplace = True)
+
